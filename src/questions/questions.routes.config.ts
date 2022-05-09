@@ -8,9 +8,9 @@ export class QuestionsRoutes extends CommonRoutesConfig {
   }
 
   configureRoutes(): express.Application {
-      this.app.route('/questions').post(questionsController.createQuestion).get(questionsController.getAllQuestions);
+      this.app.route('/api/questions').post(questionsController.createQuestion).get(questionsController.getAllQuestions);
 
-      this.app.route('/question/:id').get(questionsController.getQuestionById)
+      this.app.route('/api/questions/:id').get(questionsController.getQuestionById)
     return this.app;
   }
 }

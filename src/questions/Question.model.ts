@@ -1,11 +1,13 @@
 import { DataTypes, Model } from "sequelize";
 import sequelize from '../config/db.config';
+import Answer from '../answers/Answer.model';
 
 interface QuestionAttributes {
    id: number;
    name: string;
    link: string;
    description: string;
+   passed_count: number
 }
 
 interface QuestionCreationAttributes {
@@ -38,7 +40,14 @@ const Question = sequelize.define<QuestionInstance>('Questions', {
    description: {
       type: DataTypes.TEXT,
       allowNull: true
+   },
+   passed_count: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
    }
 })
 
+Question.hasMany(Answer, {foreignKey: 'siteId', as: 'answer'})
+
 export default Question
+

@@ -8,10 +8,12 @@ export class AnswersRoutes extends CommonRoutesConfig {
   }
 
   configureRoutes(): express.Application {
-      this.app.route('/answer').post(answersController.createAnswer)
-      this.app.route('/answer/site/:siteId').get(answersController.getAllSiteAnswers)
+      this.app.route('/api/answer').post(answersController.createAnswer)
+      this.app.route('/api/answer/site/:siteId').get(answersController.getAllSiteAnswers)
 
-      this.app.route('/answer/:id').get(answersController.getAnswerById)
+      this.app.route('/api/answer/site/:siteId/:questionNumber').get(answersController.getPropertyInfo)
+
+      this.app.route('/api/answer/:id').get(answersController.getAnswerById)
     return this.app;
   }
 }
