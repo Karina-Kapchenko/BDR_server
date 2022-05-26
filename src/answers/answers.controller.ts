@@ -24,8 +24,6 @@ class AnswersController {
     try {
       const answers = await answersService.getAllSiteAnswers(req.params.siteId);
 
-      console.log(answers);
-
       res.status(200).json(answers);
     } catch (error) {
        throw error

@@ -6,13 +6,13 @@ class AuthService {
       const existUser = await usersService.getUserByEmail(loginData.email);
 
       if (!existUser) {
-        throw new Error("USER_NOT_EXIST");
+        throw new Error("Користувача не існує");
       }
 
       const userData = existUser.get();
 
       if (loginData.password !== userData.password) {
-        throw new Error("INVALID_PASSWORD");
+        throw new Error("Невірний пароль");
       }
 
       return existUser;
@@ -26,7 +26,7 @@ class AuthService {
       const existUser = await usersService.getUserByEmail(registerData.email);
 
       if (existUser) {
-        throw new Error("USER_ALREADY_EXIST");
+        throw new Error("Користувач вже існує");
       }
       const user = await usersService.createUser(registerData);
 
